@@ -6,10 +6,14 @@ export const GlobalStyle = createGlobalStyle`
   ${normalize}
 
   html {
-    font-size: 16px;
-    font-family: Roboto, sans-serif;
+    
   }
-  body {
+  html, body {
     background-color: ${({ theme }) => getBackgroundColor(theme)};
+    height: 100%;
+    width: 100%;font-size: 16px;
+    font-family: Roboto, sans-serif;
+    margin: 0px;
+    padding: 0px;
   }
 `;
