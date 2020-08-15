@@ -4,7 +4,7 @@ import { Context } from '../../theme/Theme/colors';
 
 export type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   context?: keyof Context;
-}
+};
 
 export const Button = styled.button<ButtonProps>`
   display: inline-flex;
