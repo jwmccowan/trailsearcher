@@ -1,0 +1,135 @@
+{
+  "version": 1,
+  "projects": {
+    "trailsearcher-app": {
+      "root": "apps/trailsearcher-app",
+      "sourceRoot": "apps/trailsearcher-app/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "options": {
+            "outputPath": "dist/apps/trailsearcher-app",
+            "index": "apps/trailsearcher-app/src/index.html",
+            "main": "apps/trailsearcher-app/src/main.tsx",
+            "polyfills": "apps/trailsearcher-app/src/polyfills.ts",
+            "tsConfig": "apps/trailsearcher-app/tsconfig.app.json",
+            "assets": [
+              "apps/trailsearcher-app/src/favicon.ico",
+              "apps/trailsearcher-app/src/assets"
+            ],
+            "styles": [],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/trailsearcher-app/src/environments/environment.ts",
+                  "with": "apps/trailsearcher-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "trailsearcher-app:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "trailsearcher-app:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/trailsearcher-app/tsconfig.app.json",
+              "apps/trailsearcher-app/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/trailsearcher-app/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/trailsearcher-app/jest.config.js",
+            "tsConfig": "apps/trailsearcher-app/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "trailsearcher-app-e2e": {
+      "root": "apps/trailsearcher-app-e2e",
+      "sourceRoot": "apps/trailsearcher-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/trailsearcher-app-e2e/cypress.json",
+            "tsConfig": "apps/trailsearcher-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "trailsearcher-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "trailsearcher-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": ["apps/trailsearcher-app-e2e/tsconfig.e2e.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/trailsearcher-app-e2e/**/*"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/react"
+  },
+  "schematics": {
+    "@nrwl/react": {
+      "application": {
+        "style": "styled-components",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "styled-components"
+      },
+      "library": {
+        "style": "styled-components",
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "trailsearcher-app"
+}
