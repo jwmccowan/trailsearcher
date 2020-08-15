@@ -51,7 +51,8 @@
         "serve": {
           "builder": "@nrwl/web:dev-server",
           "options": {
-            "buildTarget": "trailsearcher-app:build"
+            "buildTarget": "trailsearcher-app:build",
+            "proxyConfig": "apps/trailsearcher-app/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -107,6 +108,89 @@
               "**/node_modules/**",
               "!apps/trailsearcher-app-e2e/**/*"
             ]
+          }
+        }
+      }
+    },
+    "trailsearcher-api": {
+      "root": "apps/trailsearcher-api",
+      "sourceRoot": "apps/trailsearcher-api/src",
+      "projectType": "application",
+      "prefix": "trailsearcher-api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/trailsearcher-api",
+            "main": "apps/trailsearcher-api/src/main.ts",
+            "tsConfig": "apps/trailsearcher-api/tsconfig.app.json",
+            "assets": ["apps/trailsearcher-api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/trailsearcher-api/src/environments/environment.ts",
+                  "with": "apps/trailsearcher-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "trailsearcher-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/trailsearcher-api/tsconfig.app.json",
+              "apps/trailsearcher-api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/trailsearcher-api/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/trailsearcher-api/jest.config.js",
+            "tsConfig": "apps/trailsearcher-api/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "ui": {
+      "root": "libs/ui",
+      "sourceRoot": "libs/ui/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/ui/tsconfig.lib.json",
+              "libs/ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ui/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui/jest.config.js",
+            "tsConfig": "libs/ui/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }

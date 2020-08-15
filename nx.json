@@ -28,6 +28,12 @@
     "trailsearcher-app-e2e": {
       "tags": [],
       "implicitDependencies": ["trailsearcher-app"]
+    },
+    "trailsearcher-api": {
+      "tags": []
+    },
+    "ui": {
+      "tags": []
     }
   }
 }
