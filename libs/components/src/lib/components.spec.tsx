@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Ui from './ui';
+import Components from './components';
 
-describe('Ui', () => {
+describe('Components', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Ui />);
+    const { baseElement } = render(<Components />);
     expect(baseElement).toBeTruthy();
   });
 });

@@ -168,9 +168,9 @@
         }
       }
     },
-    "ui": {
-      "root": "libs/ui",
-      "sourceRoot": "libs/ui/src",
+    "components": {
+      "root": "libs/components",
+      "sourceRoot": "libs/components/src",
       "projectType": "library",
       "schematics": {},
       "architect": {
@@ -179,17 +179,17 @@
           "options": {
             "linter": "eslint",
             "tsConfig": [
-              "libs/ui/tsconfig.lib.json",
-              "libs/ui/tsconfig.spec.json"
+              "libs/components/tsconfig.lib.json",
+              "libs/components/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/ui/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/components/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/ui/jest.config.js",
-            "tsConfig": "libs/ui/tsconfig.spec.json",
+            "jestConfig": "libs/components/jest.config.js",
+            "tsConfig": "libs/components/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }

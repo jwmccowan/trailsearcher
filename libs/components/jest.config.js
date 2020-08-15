@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'ui',
+  name: 'components',
   preset: '../../jest.config.js',
   transform: {
     '^.+\\.[tj]sx?$': [
@@ -8,5 +8,5 @@ module.exports = {
     ],
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../coverage/libs/ui',
+  coverageDirectory: '../../coverage/libs/components',
 };

@@ -32,7 +32,7 @@
     "trailsearcher-api": {
       "tags": []
     },
-    "ui": {
+    "components": {
       "tags": []
     }
   }
