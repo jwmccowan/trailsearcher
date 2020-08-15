@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Button } from '@trailsearcher/components';
-import { Link } from 'react-router-dom';
+import { LinkButton, Grid, Row, Col } from '@trailsearcher/components';
 
 const StyledHome = styled.div`
   background-color: dark-grey;
@@ -10,11 +9,10 @@ const StyledHome = styled.div`
 `;
 
 const Header = styled.div`
-  height: 5rem;
   width: 100%;
+  padding: ${({ theme }) => theme.spacing.SM};
   background-color: #6D1A36;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
 `;
@@ -22,6 +20,7 @@ const Header = styled.div`
 const HeaderText = styled.h1`
   font-size: 3.5rem;
   color: #FCD0A1;
+  margin: 0px;
 `;
 
 export const Home: React.FC = () => {
@@ -30,9 +29,22 @@ export const Home: React.FC = () => {
       <Header>
         <HeaderText>Trail Searcher v0.1</HeaderText>
       </Header>
-      <Link to="/old">
-        <Button>Go to old app..</Button>
-      </Link>
+      <Grid>
+        <Row collapse="sm">
+          <Col spacing="MD">
+            <LinkButton style={{ width: '100%' }} to="/old">
+              Go to old app..
+            </LinkButton>
+          </Col>
+          <Col spacing="MD">
+            <LinkButton style={{ width: '100%' }} to="/build">
+              Go to new app..
+            </LinkButton>
+          </Col>
+        </Row>
+      </Grid>
+      
+      
     </StyledHome>
   );
 };

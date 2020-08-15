@@ -11,9 +11,15 @@ export const GlobalStyle = createGlobalStyle`
   html, body {
     background-color: ${({ theme }) => getBackgroundColor(theme)};
     height: 100%;
-    width: 100%;font-size: 16px;
+    width: 100%;
+    font-size: 20px;
     font-family: Roboto, sans-serif;
     margin: 0px;
     padding: 0px;
+  }
+
+  #root {
+    height: 100%;
+    width: 100%;
   }
 `;
