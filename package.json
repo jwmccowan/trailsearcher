@@ -99,7 +99,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "yarn nx run-many --target=format --all && yarn lint:all",
-      "pre-push": "test:all"
+      "pre-push": "yarn test:all"
     }
   }
 }
