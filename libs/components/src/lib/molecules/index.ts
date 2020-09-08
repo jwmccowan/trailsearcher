@@ -1,4 +1,6 @@
 export * from './InputButton';
 export * from './InputDialog';
 export * from './AppHeader';
-export * from './ClassSelectDialog';
+export * from './ChoiceDialog';
+export * from './ChoiceButton';
+export * from './TitleButton';

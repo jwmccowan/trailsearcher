@@ -32,4 +32,4 @@ export type PCClassDatum = {
 
 export const getPCClass = (pcClass: PCClass) => PCClassData[pcClass];
 
-export const getPCClassList = (): PCClassDatum[] => Object.keys(PCClass).map(clss => getPCClass(PCClass[clss]));
+export const getPCClassList = (): PCClassDatum[] => Object.keys(PCClass).map(getPCClass);

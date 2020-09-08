@@ -1,37 +1,33 @@
 import * as React from 'react';
 import { Dialog, DialogTitle, DialogContent, List, DialogActions, ListItem } from '@material-ui/core';
 import { Button } from '../../atoms/Button';
-import { PCClass, getPCClassList } from '@trailsearcher/character-sheet';
 
-export type ClassSelectDialogProps = {
+export type Selectable<T> = { name: string; val: T };
+
+export type ChoiceDialogProps<T> = {
+  initialValue?: T;
   open: boolean;
   onClose: () => void;
-  initialValue?: PCClass;
-  onSubmit: (value: PCClass) => void;
-  title?: string;
+  title: string;
+  onSubmit: (value: T) => void;
+  values: Selectable<T>[];
 };
 
-export const ClassSelectDialog: React.FC<ClassSelectDialogProps> = ({
-  initialValue = PCClass.fighter,
-  onSubmit,
-  onClose,
-  open,
-  title,
-}) => {
-  const [value, setValue] = React.useState(initialValue);
+export function ChoiceDialog<T>({ initialValue, open, onClose, title, values, onSubmit }: ChoiceDialogProps<T>) {
+  const [value, setValue] = React.useState<T>(initialValue);
   const submit = React.useCallback(() => {
     onSubmit(value);
     onClose();
   }, [onClose, onSubmit, value]);
 
   return (
-    <Dialog onEnter={() => setValue(initialValue)} fullWidth open={open} onClose={onClose}>
+    <Dialog open={open} onEnter={() => setValue(initialValue)} fullWidth onClose={onClose}>
       <DialogTitle>{title}</DialogTitle>
       <DialogContent>
         <List>
-          {getPCClassList().map(pcc => (
-            <ListItem selected={pcc.class === value} onClick={() => setValue(pcc.class)}>
-              {pcc.name}
+          {values.map(v => (
+            <ListItem selected={v.val === value} onClick={() => setValue(v.val)}>
+              {v.name}
             </ListItem>
           ))}
         </List>
@@ -46,4 +42,4 @@ export const ClassSelectDialog: React.FC<ClassSelectDialogProps> = ({
       </DialogActions>
     </Dialog>
   );
-};
+}

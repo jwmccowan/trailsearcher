@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { BuilderMenu, NameButton } from './components';
-import { Container, AppHeader } from '@trailsearcher/components';
+import { Container, AppHeader, ChoiceButton, InputButton } from '@trailsearcher/components';
 import styled from 'styled-components';
-import { ClassButton } from './components/ClassButton';
-import { PCClass } from '@trailsearcher/character-sheet';
+import { PCClass, Ancestry, getPCClassList, getAncestryList } from '@trailsearcher/character-sheet';
 import { Grid } from '@material-ui/core';
 // import styled from 'styled-components';
 // import { useToggle, CharacterSheetContext, Container, H5, H1, H2, H4 } from '@trailsearcher/components';
@@ -63,6 +62,7 @@ const BuilderContainer = styled(Container)`
 export const Builder = () => {
   const [name, setName] = React.useState('Joojoo Toejam');
   const [clss, setClass] = React.useState(PCClass.fighter);
+  const [ancestry, setAncestry] = React.useState(Ancestry.human);
 
   return (
     <div>
@@ -71,11 +71,40 @@ export const Builder = () => {
       </AppHeader>
       <BuilderContainer>
         <Grid container>
-          <Grid item xs={12} sm={6}>
-            <NameButton name={name} onSetName={setName} />
+          <Grid item xs={12}>
+            <InputButton
+              buttonTitle="Name:"
+              dialogTitle="What is your name?"
+              onSetValue={setName}
+              initialValue={name}
+            />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <ClassButton clss={clss} onSetClass={setClass} />
+            <ChoiceButton
+              buttonTitle="Ancesstry:"
+              dialogTitle="Choose an ancestry"
+              onSetValue={setAncestry}
+              value={ancestry}
+              values={getAncestryList().map(anc => ({ name: anc.name, val: anc.ancestry }))}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <ChoiceButton
+              buttonTitle="Class:"
+              dialogTitle="Choose a class"
+              onSetValue={setClass}
+              value={clss}
+              values={getPCClassList().map(pcc => ({ name: pcc.name, val: pcc.class }))}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <ChoiceButton
+              buttonTitle="Class:"
+              dialogTitle="Choose a class"
+              onSetValue={setClass}
+              value={clss}
+              values={getPCClassList().map(pcc => ({ name: pcc.name, val: pcc.class }))}
+            />
           </Grid>
         </Grid>
       </BuilderContainer>
