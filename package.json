@@ -7,7 +7,9 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
+    "test:all": "yarn nx run-many --target=test --all",
     "lint": "nx workspace-lint && nx lint",
+    "lint:all": "nx workspace-lint && yarn nx run-many --target=lint --all",
     "e2e": "nx e2e",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
@@ -96,8 +98,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn nx format && yarn nx lint",
-      "pre-push": "npm test"
+      "pre-commit": "yarn nx run-many --target=format --all && yarn lint:all",
+      "pre-push": "test:all"
     }
   }
 }
