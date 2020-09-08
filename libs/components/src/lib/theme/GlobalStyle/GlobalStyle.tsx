@@ -1,8 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
-import { Theme } from '../theme';
 
-export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
+export const GlobalStyle = createGlobalStyle`
   ${normalize}
 
   html {
@@ -21,7 +20,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   }
 
   body {
-    background-color: ${({ theme }) => theme.colors.background};
+    background-color: black;
     font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: normal;

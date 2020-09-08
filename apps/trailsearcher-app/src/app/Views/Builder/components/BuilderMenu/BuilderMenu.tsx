@@ -1,63 +1,87 @@
 import * as React from 'react';
+import { List, ListItem, ListItemText, Divider, ListItemIcon, AppBar, Typography, Container } from '@material-ui/core';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
+import ShareIcon from '@material-ui/icons/Share';
+import InfoIcon from '@material-ui/icons/Info';
+import SaveIcon from '@material-ui/icons/Save';
+import SaveAltIcon from '@material-ui/icons/SaveAlt';
+import FolderOpenIcon from '@material-ui/icons/FolderOpen';
+import ExposurePlus1Icon from '@material-ui/icons/ExposurePlus1';
+import BugReportIcon from '@material-ui/icons/BugReport';
+import SubjectIcon from '@material-ui/icons/Subject';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { BuilderMenuList, BuilderMenuListMenuGroup, BuilderMenuListItem, Surface } from '@trailsearcher/components';
-import { ExitToStartPage } from './ExitToStartPage';
 
-const BuilderMenuBackground = styled.div`
-  top: 0;
-  right: 0;
-  bottom: 0;
-  display: block;
-  position: fixed;
-  cursor: pointer;
-  width: 40%;
-  background-color: black;
-  opacity: 0.5;
-`;
-
-const StyledBuilderMenuBody = styled(Surface).attrs({
-  onClick: (event) => event.preventDefault(),
+const MenuHeaderText = styled(Typography).attrs({
+  component: 'h6',
+  variant: 'h6',
 })`
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  overflow-y: scroll;
-  width: 60%;
+  padding: 60px 0px 8px 0px;
 `;
 
-export const BuilderMenu: React.FC<{ open: boolean; requestToggle: () => void }> = ({ open, requestToggle }) => {
+const BuilderMenuListItem: React.FC<{ onClick?: () => void; primary: string }> = ({ children, onClick, primary }) => (
+  <ListItem button onClick={onClick}>
+    <ListItemIcon>{children}</ListItemIcon>
+    <ListItemText primary={primary} />
+  </ListItem>
+);
+
+export const ExitToStartPage: React.FC = () => {
+  const { push } = useHistory();
   return (
-    open && (
-      <>
-        <BuilderMenuBackground onClick={requestToggle} />
-        <StyledBuilderMenuBody elevation={4}>
-          <BuilderMenuList>
-            <ExitToStartPage />
-            <BuilderMenuListMenuGroup>
-              <BuilderMenuListItem>Export PDF</BuilderMenuListItem>
-              <BuilderMenuListItem>Share Build Link</BuilderMenuListItem>
-            </BuilderMenuListMenuGroup>
-            <BuilderMenuListMenuGroup>
-              <BuilderMenuListItem>Options</BuilderMenuListItem>
-              <BuilderMenuListItem>Save</BuilderMenuListItem>
-              <BuilderMenuListItem>Save Copy</BuilderMenuListItem>
-              <BuilderMenuListItem>Open Character</BuilderMenuListItem>
-            </BuilderMenuListMenuGroup>
-            <BuilderMenuListMenuGroup>
-              <BuilderMenuListItem>Custom Feat Choices</BuilderMenuListItem>
-              <BuilderMenuListItem>Custom Skill Increases</BuilderMenuListItem>
-            </BuilderMenuListMenuGroup>
-            <BuilderMenuListMenuGroup>
-              <BuilderMenuListItem>Report Bug</BuilderMenuListItem>
-              <BuilderMenuListItem>Licenses</BuilderMenuListItem>
-              <BuilderMenuListItem>About Creator</BuilderMenuListItem>
-            </BuilderMenuListMenuGroup>
-          </BuilderMenuList>
-        </StyledBuilderMenuBody>
-      </>
-    )
+    <BuilderMenuListItem onClick={() => push('/')} primary="Exit to Start Page">
+      <ExitToAppIcon />
+    </BuilderMenuListItem>
   );
 };
+
+export const BuilderMenu: React.FC = () => (
+  <>
+    <AppBar elevation={0} position="sticky">
+      <MenuHeaderText>
+        <Container>Joojoo Toejam</Container>
+      </MenuHeaderText>
+    </AppBar>
+    <List style={{ width: '300px' }} component="nav">
+      <ExitToStartPage />
+      <Divider />
+      <BuilderMenuListItem primary="Export PDF">
+        <PictureAsPdfIcon />
+      </BuilderMenuListItem>
+      <BuilderMenuListItem primary="Share Build Link">
+        <ShareIcon />
+      </BuilderMenuListItem>
+      <Divider />
+      <BuilderMenuListItem primary="Options">
+        <InfoIcon />
+      </BuilderMenuListItem>
+      <BuilderMenuListItem primary="Save">
+        <SaveIcon />
+      </BuilderMenuListItem>
+      <BuilderMenuListItem primary="Save Copy">
+        <SaveAltIcon />
+      </BuilderMenuListItem>
+      <BuilderMenuListItem primary="Open Character">
+        <FolderOpenIcon />
+      </BuilderMenuListItem>
+      <Divider />
+      <BuilderMenuListItem primary="Custom Feat Choices">
+        <ExposurePlus1Icon />
+      </BuilderMenuListItem>
+      <BuilderMenuListItem primary="Custom Skill Increases">
+        <ExposurePlus1Icon />
+      </BuilderMenuListItem>
+      <Divider />
+      <BuilderMenuListItem primary="Report Bug">
+        <BugReportIcon />
+      </BuilderMenuListItem>
+      <BuilderMenuListItem primary="Licenses">
+        <SubjectIcon />
+      </BuilderMenuListItem>
+      <BuilderMenuListItem primary="About Creator">
+        <InfoIcon />
+      </BuilderMenuListItem>
+    </List>
+  </>
+);

@@ -13,4 +13,4 @@ const reducer = (value: boolean, action: 'toggle' | 'toggleOn' | 'toggleOff') =>
     default:
       return value;
   }
-}
+};
