@@ -1,8 +1,15 @@
 import * as React from 'react';
-import { BuilderMenu, NameButton } from './components';
-import { Container, AppHeader, ChoiceButton, InputButton } from '@trailsearcher/components';
+import { BuilderMenu } from './components';
+import { Container, AppHeader, FeatureButton, InputButton } from '@trailsearcher/components';
 import styled from 'styled-components';
-import { PCClass, Ancestry, getPCClassList, getAncestryList } from '@trailsearcher/character-sheet';
+import {
+  CharacterClass,
+  Ancestry,
+  getCharacterClassList,
+  getAncestryList,
+  Background,
+  getBackgroundList,
+} from '@trailsearcher/character-sheet';
 import { Grid } from '@material-ui/core';
 // import styled from 'styled-components';
 // import { useToggle, CharacterSheetContext, Container, H5, H1, H2, H4 } from '@trailsearcher/components';
@@ -61,7 +68,8 @@ const BuilderContainer = styled(Container)`
 
 export const Builder = () => {
   const [name, setName] = React.useState('Joojoo Toejam');
-  const [clss, setClass] = React.useState(PCClass.fighter);
+  const [clss, setClass] = React.useState(CharacterClass.fighter);
+  const [background, setBackground] = React.useState(Background.soldier);
   const [ancestry, setAncestry] = React.useState(Ancestry.human);
 
   return (
@@ -80,30 +88,30 @@ export const Builder = () => {
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <ChoiceButton
+            <FeatureButton
               buttonTitle="Ancesstry:"
               dialogTitle="Choose an ancestry"
               onSetValue={setAncestry}
               value={ancestry}
-              values={getAncestryList().map(anc => ({ name: anc.name, val: anc.ancestry }))}
+              values={getAncestryList()}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <ChoiceButton
+            <FeatureButton
+              buttonTitle="Background:"
+              dialogTitle="Choose a background"
+              onSetValue={setBackground}
+              value={background}
+              values={getBackgroundList()}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <FeatureButton
               buttonTitle="Class:"
               dialogTitle="Choose a class"
               onSetValue={setClass}
               value={clss}
-              values={getPCClassList().map(pcc => ({ name: pcc.name, val: pcc.class }))}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <ChoiceButton
-              buttonTitle="Class:"
-              dialogTitle="Choose a class"
-              onSetValue={setClass}
-              value={clss}
-              values={getPCClassList().map(pcc => ({ name: pcc.name, val: pcc.class }))}
+              values={getCharacterClassList()}
             />
           </Grid>
         </Grid>

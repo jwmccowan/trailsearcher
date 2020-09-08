@@ -1,24 +1,25 @@
 import * as React from 'react';
 import { useToggle } from '../../hooks';
-import { ChoiceDialog } from '../ChoiceDialog';
+import { FeatureDialog } from '../FeatureDialog';
 import { TitleButton } from '../TitleButton';
+import { Feature } from '@trailsearcher/character-sheet';
 
-type ChoiceButtonProps<T> = {
+type FeatureButtonProps<T> = {
   value: T;
   onSetValue: (name: T) => void;
   buttonTitle: string;
-  values: { name: string; val: T }[];
+  values: Feature<T>[];
   dialogTitle: string;
 };
 
-export function ChoiceButton<T>({ value, onSetValue, buttonTitle, values, dialogTitle }: ChoiceButtonProps<T>) {
+export function FeatureButton<T>({ value, onSetValue, buttonTitle, values, dialogTitle }: FeatureButtonProps<T>) {
   const [modalOpen, dispatch] = useToggle();
   const toggle = React.useCallback(() => dispatch('toggle'), [dispatch]);
 
   return (
     <>
-      <TitleButton onClick={toggle} value={values.find(({ val }) => val === value).name} title={buttonTitle} />
-      <ChoiceDialog
+      <TitleButton onClick={toggle} value={values.find(({ key }) => key === value).displayName} title={buttonTitle} />
+      <FeatureDialog
         initialValue={value}
         open={modalOpen}
         onClose={toggle}

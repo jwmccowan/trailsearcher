@@ -1,4 +1,5 @@
 import { AbilityScore } from '../AbilityScore';
+import { Feature } from '../Feature';
 
 export enum Ancestry {
   elf = 'elf',
@@ -6,30 +7,28 @@ export enum Ancestry {
   goblin = 'goblin',
 }
 
-export type AncestryDatum = {
-  ancestry: Ancestry;
-  name: string;
+export type AncestryFeature = Feature<Ancestry> & {
   abilityScoreModifiers: AbilityScore[];
 };
 
-const ancestryData: Record<Ancestry, AncestryDatum> = {
+const ancestryData: Record<Ancestry, AncestryFeature> = {
   elf: {
-    ancestry: Ancestry.elf,
-    name: 'Elf',
+    key: Ancestry.elf,
+    displayName: 'Elf',
     abilityScoreModifiers: [AbilityScore.dexterity, AbilityScore.intelligence],
   },
   human: {
-    ancestry: Ancestry.human,
-    name: 'Human',
+    key: Ancestry.human,
+    displayName: 'Human',
     abilityScoreModifiers: [AbilityScore.strength, AbilityScore.wisdom],
   },
   goblin: {
-    ancestry: Ancestry.goblin,
-    name: 'Goblin',
+    key: Ancestry.goblin,
+    displayName: 'Goblin',
     abilityScoreModifiers: [AbilityScore.dexterity, AbilityScore.charisma],
   },
 };
 
-export const getAncestry = (ancestry: Ancestry): AncestryDatum => ancestryData[ancestry];
+export const getAncestry = (ancestry: Ancestry): AncestryFeature => ancestryData[ancestry];
 
-export const getAncestryList = (): AncestryDatum[] => Object.keys(Ancestry).map(getAncestry);
+export const getAncestryList = (): AncestryFeature[] => Object.keys(Ancestry).map(getAncestry);

@@ -5,5 +5,7 @@ export * from './CharacterSheet';
 export * from './Proficiency';
 export * from './CharacterDetails';
 export * from './Skills';
-export * from './PCClass';
+export * from './CharacterClass';
 export * from './Ancestry';
+export * from './Background';
+export * from './Feature';
