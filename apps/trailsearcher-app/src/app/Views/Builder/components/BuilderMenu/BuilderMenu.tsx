@@ -20,6 +20,12 @@ const MenuHeaderText = styled(Typography).attrs({
   padding: 60px 0px 8px 0px;
 `;
 
+const StyledList = styled(List).attrs({
+  component: 'nav',
+})`
+  width: 300px;
+`;
+
 const BuilderMenuListItem: React.FC<{ onClick?: () => void; primary: string }> = ({ children, onClick, primary }) => (
   <ListItem button onClick={onClick}>
     <ListItemIcon>{children}</ListItemIcon>
@@ -43,7 +49,7 @@ export const BuilderMenu: React.FC = () => (
         <Container>Joojoo Toejam</Container>
       </MenuHeaderText>
     </AppBar>
-    <List style={{ width: '300px' }} component="nav">
+    <StyledList>
       <ExitToStartPage />
       <Divider />
       <BuilderMenuListItem primary="Export PDF">
@@ -82,6 +88,6 @@ export const BuilderMenu: React.FC = () => (
       <BuilderMenuListItem primary="About Creator">
         <InfoIcon />
       </BuilderMenuListItem>
-    </List>
+    </StyledList>
   </>
 );

@@ -5,3 +5,4 @@ export * from './CharacterSheet';
 export * from './Proficiency';
 export * from './CharacterDetails';
 export * from './Skills';
+export * from './PCClass';

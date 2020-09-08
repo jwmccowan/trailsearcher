@@ -2,6 +2,9 @@ import * as React from 'react';
 import { BuilderMenu, NameButton } from './components';
 import { Container, AppHeader } from '@trailsearcher/components';
 import styled from 'styled-components';
+import { ClassButton } from './components/ClassButton';
+import { PCClass } from '@trailsearcher/character-sheet';
+import { Grid } from '@material-ui/core';
 // import styled from 'styled-components';
 // import { useToggle, CharacterSheetContext, Container, H5, H1, H2, H4 } from '@trailsearcher/components';
 // import { BuilderNav } from './components';
@@ -59,6 +62,7 @@ const BuilderContainer = styled(Container)`
 
 export const Builder = () => {
   const [name, setName] = React.useState('Joojoo Toejam');
+  const [clss, setClass] = React.useState(PCClass.fighter);
 
   return (
     <div>
@@ -66,7 +70,14 @@ export const Builder = () => {
         <BuilderMenu />
       </AppHeader>
       <BuilderContainer>
-        <NameButton name={name} onSetName={setName} />
+        <Grid container>
+          <Grid item xs={12} sm={6}>
+            <NameButton name={name} onSetName={setName} />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <ClassButton clss={clss} onSetClass={setClass} />
+          </Grid>
+        </Grid>
       </BuilderContainer>
     </div>
   );
