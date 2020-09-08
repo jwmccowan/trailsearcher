@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@trailsearcher/components": ["libs/components/src/index.ts"]
+      "@trailsearcher/components": ["libs/components/src/index.ts"],
+      "@trailsearcher/character-sheet": ["libs/character-sheet/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

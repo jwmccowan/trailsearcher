@@ -15,10 +15,7 @@
             "main": "apps/trailsearcher-app/src/main.tsx",
             "polyfills": "apps/trailsearcher-app/src/polyfills.ts",
             "tsConfig": "apps/trailsearcher-app/tsconfig.app.json",
-            "assets": [
-              "apps/trailsearcher-app/src/favicon.ico",
-              "apps/trailsearcher-app/src/assets"
-            ],
+            "assets": ["apps/trailsearcher-app/src/favicon.ico", "apps/trailsearcher-app/src/assets"],
             "styles": [],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
@@ -64,14 +61,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "apps/trailsearcher-app/tsconfig.app.json",
-              "apps/trailsearcher-app/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/trailsearcher-app/**/*"
-            ]
+            "tsConfig": ["apps/trailsearcher-app/tsconfig.app.json", "apps/trailsearcher-app/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/trailsearcher-app/**/*"]
           }
         },
         "test": {
@@ -106,13 +97,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "apps/trailsearcher-app-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/trailsearcher-app-e2e/**/*"
-            ]
+            "tsConfig": ["apps/trailsearcher-app-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/trailsearcher-app-e2e/**/*"]
           }
         }
       }
@@ -130,9 +116,7 @@
             "outputPath": "dist/apps/trailsearcher-api",
             "main": "apps/trailsearcher-api/src/main.ts",
             "tsConfig": "apps/trailsearcher-api/tsconfig.app.json",
-            "assets": [
-              "apps/trailsearcher-api/src/assets"
-            ]
+            "assets": ["apps/trailsearcher-api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -158,14 +142,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "apps/trailsearcher-api/tsconfig.app.json",
-              "apps/trailsearcher-api/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/trailsearcher-api/**/*"
-            ]
+            "tsConfig": ["apps/trailsearcher-api/tsconfig.app.json", "apps/trailsearcher-api/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/trailsearcher-api/**/*"]
           }
         },
         "test": {
@@ -188,14 +166,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "libs/components/tsconfig.lib.json",
-              "libs/components/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/components/**/*"
-            ]
+            "tsConfig": ["libs/components/tsconfig.lib.json", "libs/components/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/components/**/*"]
           }
         },
         "test": {
@@ -260,13 +232,32 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "apps/components-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/components-e2e/**/*"
-            ]
+            "tsConfig": ["apps/components-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/components-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "character-sheet": {
+      "root": "libs/character-sheet",
+      "sourceRoot": "libs/character-sheet/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": ["libs/character-sheet/tsconfig.lib.json", "libs/character-sheet/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/character-sheet/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/character-sheet/jest.config.js",
+            "tsConfig": "libs/character-sheet/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }

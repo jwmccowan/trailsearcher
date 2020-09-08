@@ -1,31 +1,16 @@
-export type Colors = {
-  context: Context;
-  background: [string, string, string];
-  greyscale: Greyscale;
-}
+import { Colors } from '../../types';
 
-export type ContextPalette = [string, string, string, string, string, string, string];
-
-export type Context = {
-  primary: ContextPalette;
-  alert: ContextPalette;
-  danger: ContextPalette;
-  secondary: ContextPalette;
-}
-
-export const context: Context = {
-  alert: ['','','','','','',''],
-  danger: ['','','','','','',''],
-  primary: ['','','','','','',''],
-  secondary: ['','','','','','',''],
-}
-
-export type Greyscale = ContextPalette;
-
-export const greyscale: Greyscale = ['#000000', '#232323', '#484848', '#696969', '#999999', '#bcbcbc', '#ffffff']
-
-export const colors: Colors = {
-  background: ['#222222', '#3e3e3e', '#515151'],
-  context,
-  greyscale,
-};
+export const colors: Colors = Object.freeze({
+  primary: '#bb86fc',
+  primaryVariant: '#3700b3',
+  secondary: '#03dac6',
+  secondaryVariant: '#03dac6',
+  background: '#121212',
+  surface: '#121212',
+  error: '#cf6679',
+  onPrimary: '#000000',
+  onSecondary: '#000000',
+  onBackground: '#ffffff',
+  onSurface: '#ffffff',
+  onError: '#000000',
+});

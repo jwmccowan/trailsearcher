@@ -17,13 +17,7 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e",
-          "build-storybook"
-        ]
+        "cacheableOperations": ["build", "lint", "test", "e2e", "build-storybook"]
       }
     }
   },
@@ -33,9 +27,7 @@
     },
     "trailsearcher-app-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "trailsearcher-app"
-      ]
+      "implicitDependencies": ["trailsearcher-app"]
     },
     "trailsearcher-api": {
       "tags": []
@@ -45,9 +37,10 @@
     },
     "components-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "components"
-      ]
+      "implicitDependencies": ["components"]
+    },
+    "character-sheet": {
+      "tags": []
     }
   }
 }

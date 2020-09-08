@@ -1,33 +1,29 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { LinkButton, Grid, Row, Col } from '@trailsearcher/components';
+import { LinkButton, Grid, Row, Col, H3, Surface } from '@trailsearcher/components';
 
-const StyledHome = styled.div`
-  background-color: dark-grey;
+const StyledHome = styled(Surface)`
   height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
-const Header = styled.div`
+const Header = styled(Surface).attrs({
+  elevation: 4,
+})`
   width: 100%;
   padding: ${({ theme }) => theme.spacing.SM};
-  background-color: #6D1A36;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-const HeaderText = styled.h1`
-  font-size: 3.5rem;
-  color: #FCD0A1;
-  margin: 0px;
-`;
-
 export const Home: React.FC = () => {
   return (
-    <StyledHome>
+    <StyledHome elevation={1}>
       <Header>
-        <HeaderText>Trail Searcher v0.1</HeaderText>
+        <H3>Trail Searcher v0.1</H3>
       </Header>
       <Grid>
         <Row collapse="sm">
@@ -43,8 +39,6 @@ export const Home: React.FC = () => {
           </Col>
         </Row>
       </Grid>
-      
-      
     </StyledHome>
   );
 };

@@ -1,6 +1,6 @@
-export type Spacing = typeof spacing;
+import { Spacing } from '../../types';
 
-export const spacing = {
+export const spacing: Spacing = Object.freeze({
   MD: '1rem',
   SM: '0.5rem',
   XS: '0.25rem',
@@ -11,4 +11,4 @@ export const spacing = {
   XL: '4rem',
   XXL: '8rem',
   XXXL: '16rem',
-};
+});

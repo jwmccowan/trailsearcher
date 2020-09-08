@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { screenSize } from '../../media';
-import { Spacing } from '../../theme/Theme/spacing';
+import { Spacing } from '../../theme/types';
 
 export const Grid = styled.div``;
 

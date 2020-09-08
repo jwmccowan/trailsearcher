@@ -1,25 +1,32 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
-import { getBackgroundColor } from '../themeUtils';
+import { Theme } from '../theme';
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   ${normalize}
 
   html {
-    
+    font-size: 16px;
+    box-sizing: border-box;
   }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
   html, body {
-    background-color: ${({ theme }) => getBackgroundColor(theme)};
     height: 100%;
     width: 100%;
-    font-size: 20px;
-    font-family: Roboto, sans-serif;
     margin: 0px;
     padding: 0px;
   }
 
-  #root {
-    height: 100%;
-    width: 100%;
+  body {
+    background-color: ${({ theme }) => theme.colors.background};
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.5px;
   }
 `;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { BuilderMenuList, BuilderMenuListMenuGroup, BuilderMenuListItem } from '@trailsearcher/components';
+import { BuilderMenuList, BuilderMenuListMenuGroup, BuilderMenuListItem, Surface } from '@trailsearcher/components';
 import { ExitToStartPage } from './ExitToStartPage';
 
 const BuilderMenuBackground = styled.div`
@@ -12,11 +12,11 @@ const BuilderMenuBackground = styled.div`
   cursor: pointer;
   width: 40%;
   background-color: black;
-  opacity: .5;
+  opacity: 0.5;
 `;
 
-const StyledBuilderMenuBody = styled.div.attrs({
-  onClick: event => event.preventDefault(),
+const StyledBuilderMenuBody = styled(Surface).attrs({
+  onClick: (event) => event.preventDefault(),
 })`
   display: flex;
   flex-direction: column;
@@ -25,60 +25,39 @@ const StyledBuilderMenuBody = styled.div.attrs({
   bottom: 0;
   left: 0;
   overflow-y: scroll;
-  background-color: white;
   width: 60%;
 `;
 
-export const BuilderMenu: React.FC<{open: boolean; requestToggle: () => void }> = ({ open, requestToggle }) => {
-  return open && (
-    <>
-      <BuilderMenuBackground onClick={requestToggle} />
-      <StyledBuilderMenuBody>
-        <BuilderMenuList>
-          <ExitToStartPage />
-          <BuilderMenuListMenuGroup>
-            <BuilderMenuListItem>
-              Export PDF
-            </BuilderMenuListItem>
-            <BuilderMenuListItem>
-              Share Build Link
-            </BuilderMenuListItem>
-          </BuilderMenuListMenuGroup>
-          <BuilderMenuListMenuGroup>
-            <BuilderMenuListItem>
-              Options
-            </BuilderMenuListItem>
-            <BuilderMenuListItem>
-              Save
-            </BuilderMenuListItem>
-            <BuilderMenuListItem>
-              Save Copy
-            </BuilderMenuListItem>
-            <BuilderMenuListItem>
-              Open Character
-            </BuilderMenuListItem>
-          </BuilderMenuListMenuGroup>
-          <BuilderMenuListMenuGroup>
-            <BuilderMenuListItem>
-              Custom Feat Choices
-            </BuilderMenuListItem>
-            <BuilderMenuListItem>
-              Custom Skill Increases
-            </BuilderMenuListItem>
-          </BuilderMenuListMenuGroup>
-          <BuilderMenuListMenuGroup>
-            <BuilderMenuListItem>
-              Report Bug
-            </BuilderMenuListItem>
-            <BuilderMenuListItem>
-              Licenses
-            </BuilderMenuListItem>
-            <BuilderMenuListItem>
-              About Creator
-            </BuilderMenuListItem>
-          </BuilderMenuListMenuGroup>
-        </BuilderMenuList>
-      </StyledBuilderMenuBody>
-    </>
+export const BuilderMenu: React.FC<{ open: boolean; requestToggle: () => void }> = ({ open, requestToggle }) => {
+  return (
+    open && (
+      <>
+        <BuilderMenuBackground onClick={requestToggle} />
+        <StyledBuilderMenuBody elevation={4}>
+          <BuilderMenuList>
+            <ExitToStartPage />
+            <BuilderMenuListMenuGroup>
+              <BuilderMenuListItem>Export PDF</BuilderMenuListItem>
+              <BuilderMenuListItem>Share Build Link</BuilderMenuListItem>
+            </BuilderMenuListMenuGroup>
+            <BuilderMenuListMenuGroup>
+              <BuilderMenuListItem>Options</BuilderMenuListItem>
+              <BuilderMenuListItem>Save</BuilderMenuListItem>
+              <BuilderMenuListItem>Save Copy</BuilderMenuListItem>
+              <BuilderMenuListItem>Open Character</BuilderMenuListItem>
+            </BuilderMenuListMenuGroup>
+            <BuilderMenuListMenuGroup>
+              <BuilderMenuListItem>Custom Feat Choices</BuilderMenuListItem>
+              <BuilderMenuListItem>Custom Skill Increases</BuilderMenuListItem>
+            </BuilderMenuListMenuGroup>
+            <BuilderMenuListMenuGroup>
+              <BuilderMenuListItem>Report Bug</BuilderMenuListItem>
+              <BuilderMenuListItem>Licenses</BuilderMenuListItem>
+              <BuilderMenuListItem>About Creator</BuilderMenuListItem>
+            </BuilderMenuListMenuGroup>
+          </BuilderMenuList>
+        </StyledBuilderMenuBody>
+      </>
+    )
   );
 };
